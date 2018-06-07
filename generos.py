@@ -34,7 +34,6 @@ def get_title_rating(genero):
         for span in soup.find_all("span",title=True):
             titulos.append(span.find("a").text)
         pagina = pagina + 1
-    print len(titulos)
     return titulos
 
     
