@@ -4,9 +4,7 @@
 from bs4 import BeautifulSoup
 import requests
 import jsonlines
-import sys
-reload(sys)
-sys.setdefaultencoding("utf-8")
+
 
 def get_generos(endereco):
     html = get_html(endereco)
@@ -14,6 +12,8 @@ def get_generos(endereco):
     generos = set()
 
     for genero in soup.find_all("img",alt=True):
+        if "IMDbPro" in genero["alt"]:
+            genero["alt"] = "Documentary"
         generos.add(genero["alt"])
     return generos
 
@@ -40,11 +40,12 @@ def get_title_rating(genero):
 
 
 generos = get_generos("https://www.imdb.com/feature/genre")
-titulos_comedia = get_title_rating("comedy")
+
 
 for genero in generos:
+    titulos = get_title_rating(genero)
     fo = open("genero_"+genero+".txt", "wb")
-    for titulo in titulos_comedia:
+    for titulo in titulos:
         writer = jsonlines.Writer(fo)
         writer.write(titulo)
     writer.close()
