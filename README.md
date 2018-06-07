@@ -6,7 +6,7 @@ cmd (windows):
 
 python -m pip install jsonlines
 
-python -m pip install beautifulsoup
+python -m pip install beautifulsoup4
 
 python -m pip install requests
 
