@@ -12,7 +12,7 @@ python -m pip install requests
 
 python -m pip install lxml
 
-Para exdecutar o programa, basta chamar o arquivo python.py
+Para executar o programa, basta chamar o arquivo python.py
 
 cmd (windows):
 
